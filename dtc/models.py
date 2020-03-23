@@ -19,11 +19,6 @@ class Bus(models.Model):
         on_delete=models.CASCADE,
         null=True
     )
-    booking = models.OneToOneField(
-        'Booking',
-        on_delete=models.CASCADE,
-        null=True
-    )
     bus_no = models.CharField(max_length=60, blank=True, null=True, unique=True)
     latitude = models.CharField(max_length=60, blank=True, null=True)
     longitude = models.CharField(max_length=60, blank=True, null=True)
@@ -33,11 +28,6 @@ class Route(models.Model):
     Model class to represent Route for specific Bus
     '''
 
-    booking = models.OneToOneField(
-        'Booking',
-        on_delete=models.CASCADE,
-        null=True
-    )
     route_no = models.CharField(max_length=60, blank=False, unique=True)
     source = models.CharField(max_length=60, blank=True)
     destination = models.CharField(max_length=60, blank=True)
@@ -50,6 +40,7 @@ class BusStop(models.Model):
     route = models.ForeignKey(
         'Route',
         on_delete=models.CASCADE,
+        blank=True,
         null=True
     )
     longitude = models.CharField(max_length=60, blank=True, null=True)
@@ -62,6 +53,18 @@ class Booking(models.Model):
     Also treated as Master Table here
     '''
 
+    bus = models.OneToOneField(
+        'bus',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
+    route = models.OneToOneField(
+        'Route',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
     source = models.CharField(max_length=60, blank=True, null=True)
     destination = models.CharField(max_length=60, blank=True, null=True)
 
@@ -78,6 +81,7 @@ class Customer(models.Model):
     booking = models.OneToOneField(
         'Booking',
         on_delete=models.CASCADE,
+        blank=True,
         null=True
     )
     first_name = models.CharField(max_length=32, blank=True, null=True)
