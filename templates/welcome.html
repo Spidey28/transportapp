@@ -1,5 +1,55 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Transport System</title>
+</head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<body>
+    <div>
+        <a href="routes/"> ROUTES </a><br>
+        <a href="maps/"> To the Map </a><br>
+        <a href="#" id='test'>Do something</a>
+        <p id='pp'></p>
+    </div>
+</body>
+<script>
+    /*
+    On focus out on input nickname,
+    call AJAX get request to check if the nickName
+    already exists or not.
+    */
+    $("#test").click(function(){
+        var data = {
+            'fn': 'Mohit',
+            'sn': 'Sood',
+            'id': 1
+        };
 
-{% block page_content %}
+        var req = $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "{% url 'routes' %}",
+            data: data
+        })
 
-{% endblock %}
+        req.success(function(data, status, xhr){
+            console.log(data);
+            // $('div').html(data.destination);
+            // $('div').html(data.source);
+            // $('#pp').append(data['source']);
+            data_resp = JSON.stringify(data)
+            console.log(data_resp)
+            for (x in data){
+                $('#pp').append(data[x] + "<br>");
+            }
+        })
+
+        req.error(function(error, status, xhr){
+            console.log(error.status);
+            console.log(error);
+        })
+    });
+</script>
+</html> 
