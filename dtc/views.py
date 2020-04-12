@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from dtc.models import Route
-from django.http.response import JsonResponse
 from django.http import HttpResponse
-
+from django.http.response import JsonResponse
+from django.shortcuts import render
+from dtc.models import Booking, Route
+from dtc.serializers import BookingSerializer
 
 
 def hello_world(request):
@@ -40,3 +40,12 @@ def routes(request):
     # return render(request, 'routes.html', {'routes': routes})
     return JsonResponse(response)
     # return HttpResponse(response, content_type='application/json')
+
+
+def exampleSerializer(request):
+
+    if request.method == 'GET':
+        booking = Booking.objects.all()
+        serializer = BookingSerializer(booking)
+
+        return JsonResponse(serializer.data, status=200)

@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.welcome, name='hello_world'),
     path('maps/', views.maps, name='maps'),
     path('routes/', views.routes, name='routes'),
+    path('serializer/', views.exampleSerializer, name='example_serializer'),
 ]
