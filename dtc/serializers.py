@@ -16,16 +16,16 @@ class RouteSerializer(serializers.ModelSerializer):
 
 class BookingSerializer(serializers.ModelSerializer):
     # route = RouteSerializer()
-    bus_id = serializers.IntegerField(allow_null=True, write_only=True)
-    route_id = serializers.IntegerField(allow_null=True, write_only=True)
+    # bus_id = serializers.IntegerField(allow_null=True, write_only=True)
+    # route_id = serializers.IntegerField(allow_null=True, write_only=True)
     class Meta:
         model = Booking
         fields = (
             'id',
             'bus',
-            'bus_id',
+            # 'bus_id',
             'route',
-            'route_id',
+            # 'route_id',
             'source',
             'destination'
         )

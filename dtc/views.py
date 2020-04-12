@@ -46,6 +46,6 @@ def exampleSerializer(request):
 
     if request.method == 'GET':
         booking = Booking.objects.all()
-        serializer = BookingSerializer(booking)
+        serializer = BookingSerializer(booking, many=True)
 
-        return JsonResponse(serializer.data, status=200)
+        return JsonResponse(serializer.data, status=200, safe=False)
