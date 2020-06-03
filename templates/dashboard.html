@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dashboard</title>
+</head>
+{% load static %}
+<!-- DEFAULT INCLUDES -->
+
+<!-- CSS -->
+<link rel="stylesheet" href="css\style.css">
+<!-- /CSS -->
+
+<!-- FA FA ICONS LINK -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- /FA FA ICONS LINK -->
+
+<!-- JAVASCRIPT/JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- /JAVASCRIPT/JQUERY -->
+
+<!-- /DEFAULT INCLUDES -->
+
+<!--CSS -->
+<link rel="stylesheet" href="{% static 'css\dashboard.css' %}">
+<!--/CSS -->
+
+<!-- SCRIPT -->
+<script type="text/javascript" src="{% static 'js\dashboard.js' %}"></script>
+<!-- /SCRIPT -->
+
+<body>
+
+<div id="btnContainer">
+  <button class="btn" onclick="listView()" id="list"><i class="fa fa-bars"></i> List</button> 
+  <button class="btn active" onclick="gridView()" id="grid"><i class="fa fa-th-large"></i> Grid</button>
+</div>
+<br>
+
+<div class="row">
+
+    <button class="mainbtn column"><i class="fa fa-search"></i> <i class="fa fa-bus"></i><br>Find Bus</button>
+  
+  	<button class="mainbtn column"  onClick="location.href='{% url 'find_route' %}'"><i class="fa fa-search"></i> <i class="fa fa-map-marker"></i><br>Find Route</button>
+
+</div>
+
+<div class="row">
+
+  <button class="mainbtn column"><i class="fa fa-ticket"></i><br>ETickets</button>
+
+  <button class="mainbtn column"><i class="fa fa-history"></i><br>Travel History</button>
+
+</div>
+
+<div class="row">
+
+  <button class="mainbtn column"><i class="fa fa-info-circle"></i><br>FAQ</button>
+
+  <button class="mainbtn column"><i class="fa fa-phone"></i><br>Customer Support</button>
+
+</div>
+
+</body>
+</html>
