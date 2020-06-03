@@ -21,3 +21,6 @@ urlpatterns = [
     # path('demo', include('dtc.urls')),
     path('', include('dtc.urls')),
 ]
+admin.site.site_header = "Delhi Transport Corporation Administration"
+admin.site.site_title = "DTC Admin Portal"
+admin.site.index_title = "Welcome to DTC, hope you enjoying our services"

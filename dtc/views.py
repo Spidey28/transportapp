@@ -3,11 +3,17 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 from dtc.models import Booking, Route
 from dtc.serializers import BookingSerializer
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def hello_world(request):
 
     return render(request, 'hello_world.html', {})
+
+
+def dashboard(request):
+
+    return render(request, 'dashboard.html', {})
 
 
 def maps(request):
@@ -18,6 +24,26 @@ def maps(request):
 def welcome(request):
 
     return render(request, 'welcome.html', {})
+
+
+def find_route(request):
+    # import ipdb; ipdb.set_trace()
+    request_data = request.GET
+    if request_data:
+        source = request_data['source']
+        destination = request_data['destination']
+
+        try:
+            route_obj = Route.objects.get(
+                source=source,
+                destination=destination
+            )
+
+        except ObjectDoesNotExist:
+
+            return HttpResponse("<h1> Sorry! No Routes Found <h1>")
+
+    return render(request, 'findroute.html', {})
 
 
 def routes(request):
