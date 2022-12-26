@@ -13,5 +13,5 @@ setuptools==46.0.0
 six==1.14.0 
 sqlparse==0.3.1  
 typed-ast==1.4.1  
-wheel==0.34.2 
+wheel==0.38.1 
 wrapt==1.11.2 
